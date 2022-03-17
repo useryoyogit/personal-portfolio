@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+copycatcoder - projects
+{% endblock page_title %}
+
+{% block content %}
+
+<div class="container-md d-flex flex-wrap gap-3 justify-content-center">
+    {% for project in projects%}
+    <div class="card-group" style="margin-top: 40px; width: 18rem">
+        <div class="card">
+            <img src="{{ project.image.url }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{project.description}}</p>
+            </div>
+            <div class="card-footer d-flex justify-content-center">
+                <a href="{{project.url}}" class="btn btn-primary" target="_blank">LIVE DEMO</a>
+            </div>
+        </div>
+
+    </div>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

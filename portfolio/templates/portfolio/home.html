@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+ctrl-C 🐈 👩‍💻
+{% endblock page_title %}
+
+{% block content %}
+<div class="container-md" style="padding-top: 30px;">
+    <div class="card" style="margin: 20px;">
+        <h5 class="card-header">no cap</h5>
+        <div class="card-body">
+            <h5 class="card-title">a little about me</h5>
+            <p class="card-text">hi, it's copycatcoder. i know the basics of html, css and javascript, also
+                python
+                (variables, conditionals, loops, functions, OOP) and django (views, url routing, templates and template
+                inheritance, tags, filters,static files, media files, dtl, orm) (march, 2022)
+                at first,
+                building websites seemed fun, but later on it became frustrating! (i can't center a button :| )from
+                then on i decided to become a back-end developer. below i will list my skills as i acquire!</p>
+            <a href="{% url 'works-path' %}" class="btn btn-primary">See my projects</a>
+        </div>
+    </div>
+
+    {% for skill in skills%}
+    <div class="card" style="margin: 20px;">
+        <h5 class="card-header">{{skill.header}}</h5>
+        <div class="card-body">
+            {% if skill.title %}
+            <h5 class="card-title">{{skill.title}}</h5>
+            {% endif %}
+            <p class="card-text">{{skill.text}}</p>
+
+            {% if skill.url %}
+            <a href="{{skill.url}}" class="btn btn-primary">See for yourself</a>
+            {% endif %}
+        </div>
+    </div>
+
+    {% endfor %}
+
+
+</div>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block page_title %}
+copycatcoder - blog
+{% endblock page_title %}
+
+{% block content %}
+
+
+<div class="container-md" style="padding-top: 30px;">
+    <h1>copycatcoder has written {{blogs.count}} blog{{blogs.count|pluralize}}</h1>
+    {% for blog in blogs %}
+    <div class="card" style="margin: 20px;">
+        <h5 class="card-header">{{blog.date|date:'M d Y'}}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{blog.title}}</h5>
+            <p class="card-text">{{blog.description|striptags|truncatechars:300}}</p>
+            <a href="{% url  'detail' blog.id %}" class="btn btn-primary">Read more</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
